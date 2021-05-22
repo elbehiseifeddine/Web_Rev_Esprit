@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <td>NSC</td>
+        <td>Email</td>
+        <td>Classroom</td>
+        <td>Supprimer</td>
+        <td>Modifier</td>
+    </tr>
+    {% for i in list %}
+        <tr>
+            <td>{{ i.nsc }}</td>
+            <td>{{ i.email }}</td>
+            <td>{{ i.classroom.name }}</td>
+            <td><a href="{{ path('deleteStudent',{'NSC':i.NSC}) }}">Supprimer</a></td>
+            <td><a href="{{ path('updateStudent',{'NSC':i.NSC}) }}">Modifier</a></td>
+        </tr>
+    {% endfor%}
+
+</table>
+<a href="{{ path('addStudent') }}">Ajouter un Student</a>
+</body>
+</html>

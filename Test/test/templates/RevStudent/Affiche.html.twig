@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<form method="post" action="{{ path('recherche') }}">
+    <label>Recherche</label>
+    <input type="text" name="search"><input type="submit" value="Recherche">
+</form>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Nsc</th>
+        <th>Classroom_id</th>
+        <th>Email</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+    <tr {% for s in student %}>
+        <td>{{ s.id }}</td>
+        <td>{{ s.nsc }}</td>
+        <td>{{ s.classroom.name }}</td>
+        <td>{{ s.email }}</td>
+        <td><a href="{{ path('UpdateS',{'id':s.id}) }}">Update</a></td>
+        <td><a href="{{ path('dS',{'id':s.id}) }}">Delete</a></td>
+    </tr{% endfor %}>
+</table>
+<a href="{{ path('AddS') }}">Add</a>
+</body>
+</html>
